@@ -99,7 +99,36 @@ with BuildPart() as cover:
     with BuildSketch(cover.faces().sort_by(Axis.Z)[-1]) as row3_cutouts:
         with Locations(row3_locs):
             Circle(radius=hole_dia_small / 2)
-            
+    extrude(amount=-wall, mode=Mode.SUBTRACT)
+
+    # 8. Emboss lines between holes in row 2
+    # Each line has two 12mm segments with a 14mm gap in between
+    seg_w = 12.0
+    gap = 14.0
+    line_h = 1.0
+    # Offset from original centers (-35.75 and 35.75)
+    off = (seg_w + gap) / 2 # 13.0 
+    
+    line_locs = [
+        (-35.75 - off, y_row2 - 2), (-35.75 + off, y_row2 - 2),
+        (35.75 - off, y_row2 - 2), (35.75 + off, y_row2 - 2)
+    ]
+    
+    with BuildSketch(cover.faces().sort_by(Axis.Z)[-1]) as split_lines:
+        with Locations(line_locs):
+            Rectangle(seg_w, line_h)
+    extrude(amount=-wall, mode=Mode.SUBTRACT)
+
+    # 9. Add arrow-shaped cutouts (uniform 1mm stroke width)
+    # Recalculated vertices for 1mm stroke and perfect symmetry
+    with BuildSketch(cover.faces().sort_by(Axis.Z)[-1]) as arrow_cutout_1:
+        with Locations((-35.75, y_row2 - 2)):
+            Polygon([(-4.0, 2.5), (0.0, -2.5), (4.0, 2.5), (2.72, 2.5), (0.0, -0.9), (-2.72, 2.5)])
+    extrude(amount=-wall, mode=Mode.SUBTRACT)
+
+    with BuildSketch(cover.faces().sort_by(Axis.Z)[-1]) as arrow_cutout_2:
+        with Locations((35.75, y_row2 - 2)):
+            Polygon([(-4.0, -2.5), (0.0, 2.5), (4.0, -2.5), (2.72, -2.5), (0.0, 0.9), (-2.72, -2.5)])
     extrude(amount=-wall, mode=Mode.SUBTRACT)
 
 # Display the result in the OCP Viewer
