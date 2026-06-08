@@ -48,12 +48,13 @@ with BuildPart() as cover:
     # 4. Add a top cutout for a screen
     # ... (existing cutout code)
     hole_w = inner_w - 17 - 17
-    hole_l = inner_l - 30 - 32
-    hole_y_offset = (32 - 30) / 2
+    hole_l = inner_l - 29 - 32
+    hole_y_offset = (32 - 29) / 2
     
     with BuildSketch(cover.faces().sort_by(Axis.Z)[-1]) as screen_cutout:
         with Locations((0, hole_y_offset)):
             Rectangle(hole_w, hole_l)
+        fillet(screen_cutout.vertices(), radius=1.0)
     extrude(amount=-wall, mode=Mode.SUBTRACT)
 
     # 5. Add 6 circular holes for knobs/buttons
@@ -78,7 +79,7 @@ with BuildPart() as cover:
 
     # 6. Add 3 more circular holes (second row)
     # Diameter 18mm, 32mm from left/right inner edges, 15mm from top inner edge
-    y_row2 = inner_l / 2 - 79
+    y_row2 = inner_l / 2 - 78
     # Generate 3 equally spaced locations along the X axis
     row2_locs = [
         (x_first + i * (x_last - x_first) / 2, y_row2) 
@@ -94,7 +95,7 @@ with BuildPart() as cover:
     # Diameter 8mm, centered over the second row holes (same X)
     # Placed 24mm from the top inner edge to fit between row 2 and the screen
     hole_dia_small = 6.0
-    y_row3 = inner_l / 2 - 93
+    y_row3 = inner_l / 2 - 92
     row3_locs = [(loc[0], y_row3) for loc in row2_locs]
     
     with BuildSketch(cover.faces().sort_by(Axis.Z)[-1]) as row3_cutouts:
