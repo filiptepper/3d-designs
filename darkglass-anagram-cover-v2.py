@@ -142,8 +142,17 @@ with BuildPart() as cover:
             fillet(cutout_sketch.vertices().sort_by(Axis.Y)[-2:], radius=fillet_r)
         extrude(amount=10.0, both=True, mode=Mode.SUBTRACT)
 
+    # 11. Add front side cutout (opposite to the 6 knob holes)
+    # Width 195mm, height 42mm from the bottom (Z=0) with 3mm fillet on top corners
+    back_cutout_w = 195.0
+    back_cutout_h = 42.0
+    with BuildSketch(Plane.XZ.offset(-outer_l / 2)) as back_cutout_sketch:
+        Rectangle(back_cutout_w, back_cutout_h, align=(Align.CENTER, Align.MIN))
+        fillet(back_cutout_sketch.vertices().sort_by(Axis.Y)[-2:], radius=fillet_r)
+    extrude(amount=10.0, both=True, mode=Mode.SUBTRACT)
+
 # Display the result in the OCP Viewer
 show(cover)
 
 # Export the part to STL for 3D printing
-# export_stl(cover.part, "darkglass-anagram-cover-v2.stl")
+export_stl(cover.part, "darkglass-anagram-cover-v2.stl")
