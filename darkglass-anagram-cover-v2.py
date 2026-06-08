@@ -1,8 +1,3 @@
-import typing
-import typing_extensions
-if not hasattr(typing, "NotRequired"):
-    typing.NotRequired = typing_extensions.NotRequired
-
 from build123d import *
 from ocp_vscode import *
 
@@ -141,4 +136,4 @@ with BuildPart() as cover:
 show(cover)
 
 # Export the part to STL for 3D printing
-export_stl(cover.part, "darkglass-anagram-cover-v2.stl")
+# export_stl(cover.part, "darkglass-anagram-cover-v2.stl")
