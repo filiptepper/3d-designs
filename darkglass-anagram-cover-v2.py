@@ -131,6 +131,16 @@ with BuildPart() as cover:
         with Locations((35.75, y_row2 - 2)):
             Polygon([(-4.0, -2.5), (0.0, 2.5), (4.0, -2.5), (2.72, -2.5), (0.0, 0.9), (-2.72, -2.5)])
     extrude(amount=-wall, mode=Mode.SUBTRACT)
+    # 10. Add side cutouts on both shorter sides
+    # Width 45mm, height 42mm from the bottom (Z=0) with 3mm fillet on top corners
+    cutout_w = 45.0
+    cutout_h = 42.0
+    fillet_r = 3.0
+    for x_pos in [-outer_w / 2, outer_w / 2]:
+        with BuildSketch(Plane.YZ.offset(x_pos)) as cutout_sketch:
+            Rectangle(cutout_w, cutout_h, align=(Align.CENTER, Align.MIN))
+            fillet(cutout_sketch.vertices().sort_by(Axis.Y)[-2:], radius=fillet_r)
+        extrude(amount=10.0, both=True, mode=Mode.SUBTRACT)
 
 # Display the result in the OCP Viewer
 show(cover)
