@@ -1,5 +1,11 @@
+import typing
+import typing_extensions
+if not hasattr(typing, "NotRequired"):
+    typing.NotRequired = typing_extensions.NotRequired
+
 from build123d import *
 from ocp_vscode import *
+
 
 # Dimensions of the device (Darkglass anagram)
 device_w = 210.0
@@ -8,8 +14,8 @@ device_h = 46.0
 
 # Printing parameters
 clearance = 0.5  # Extra space around the device
-wall = 2.0       # Thickness of the cover walls
-r = 5.0          # Corner radius
+wall = 0.5       # Thickness of the cover walls
+r = 7.0          # Corner radius
 
 # Inner dimensions (the void)
 inner_w = device_w + 2 * clearance
@@ -77,7 +83,7 @@ with BuildPart() as cover:
 
     # 6. Add 3 more circular holes (second row)
     # Diameter 18mm, 32mm from left/right inner edges, 15mm from top inner edge
-    y_row2 = inner_l / 2 - 80
+    y_row2 = inner_l / 2 - 79
     # Generate 3 equally spaced locations along the X axis
     row2_locs = [
         (x_first + i * (x_last - x_first) / 2, y_row2) 
@@ -92,8 +98,8 @@ with BuildPart() as cover:
     # 7. Add 3 smaller holes (8mm) under the second row
     # Diameter 8mm, centered over the second row holes (same X)
     # Placed 24mm from the top inner edge to fit between row 2 and the screen
-    hole_dia_small = 7.0
-    y_row3 = inner_l / 2 - 94
+    hole_dia_small = 6.0
+    y_row3 = inner_l / 2 - 93
     row3_locs = [(loc[0], y_row3) for loc in row2_locs]
     
     with BuildSketch(cover.faces().sort_by(Axis.Z)[-1]) as row3_cutouts:
@@ -135,4 +141,4 @@ with BuildPart() as cover:
 show(cover)
 
 # Export the part to STL for 3D printing
-# export_stl(cover.part, "darkglass-anagram-cover-v2.stl")
+export_stl(cover.part, "darkglass-anagram-cover-v2.stl")
