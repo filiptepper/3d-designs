@@ -1,3 +1,4 @@
 # created by virtualenv automatically
 .venv
 *.stl
+__pycache__/
