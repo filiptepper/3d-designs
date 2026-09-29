@@ -16,6 +16,17 @@ This repository contains parametric 3D models designed using **[build123d](https
 
 * **Description**: A basic parametric key tag / keyring template. Easily customizable in dimensions (width, length, thickness, hole size, offsets, and corner radius).
 
+### 3. Chocolate & Darkglass Pedalboard
+
+* **Description**: A compact, ergonomic two-tier pedalboard custom-engineered for the **M-VAVE Chocolate Plus** and **Darkglass Anagram**, integrated with an under-deck compartment for the **Baseus GaN3 Pro 65W Desktop Charger**.
+  * **Lower Tier**: Recessed pocket (214 × 38 mm) with a 6 mm front retaining lip for the M-VAVE Chocolate Plus.
+  * **Cable Trough**: 22 mm deep channel behind the Chocolate with 3 drop slots into the lower cavity for right-angle / straight 1/4" TRS jacks and USB-C cables.
+  * **Upper Tier**: Universal-fit Darkglass Anagram tray (213.5 × 102.5 mm) tilted at an ergonomic 13° angle, compatible both bare and with the 3D-printed cover on.
+  * **Under-Deck Charger Bay**: Slide-in sleeve on the left side holding the Baseus GaN3 Pro 65W (40 × 36.9 × 70 mm), featuring a rear AC power cord pass-through, side cable notch, and finger push-out hole on the underside.
+  * **Cable Routing**: Hidden channels for USB-C (Anagram to charger), USB-C (Chocolate to charger), and 1/4" TRS (Chocolate to Anagram), plus zip-tie anchor bridges on the floor.
+  * **Rear I/O**: Three scalloped rear cutouts for USB-C PD power, MIDI TRS, and audio jacks, plus a rear AC power cord exit notch.
+  * **Base**: 6 recessed mounting pads (12 mm diameter) for non-slip rubber feet.
+
 ---
 
 ## Getting Started
