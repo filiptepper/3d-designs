@@ -79,6 +79,7 @@ REAR_TOP_Z = ANAGRAM_REAR_FLOOR_Z + ANAGRAM_LIP * COS_A # ~58.76 mm
 
 # --- Underbelly Cradle: Baseus GaN3 Pro 65W Desktop Charger ---
 # Physical unit CCDK65S: 70.0 mm (L) x 40.0 mm (W) x 36.9 mm (H)
+
 CHARGER_WIDTH = 41.5          # +1.5 mm pocket clearance
 CHARGER_LENGTH = 73.0         # +3.0 mm pocket clearance
 CHARGER_HEIGHT = 38.0         # +1.1 mm pocket clearance
@@ -246,10 +247,9 @@ def build_stage_pedalboard() -> bd.Solid:
                 bd.Box(18.0, 16.0, 14.0)
 
         # ----------------------------------------------------------------------
-        # Step 9: Baseus GaN3 Pro Charger Underbelly Cradle (Far-Left Bay)
+        # Step 9: Baseus GaN3 Pro Charger Underbelly Cradle
         # ----------------------------------------------------------------------
-        # Left and Right Guiding Cradle Walls for Charger Body, sloped to deck underside
-        cradle_wall_t = 3.0
+        cradle_wall_t = 3.5
         cradle_x_left = CHARGER_X_CTR - CHARGER_WIDTH / 2.0 - cradle_wall_t / 2.0
         cradle_x_right = CHARGER_X_CTR + CHARGER_WIDTH / 2.0 + cradle_wall_t / 2.0
 
@@ -260,6 +260,8 @@ def build_stage_pedalboard() -> bd.Solid:
             (CHARGER_Y0, ANAGRAM_FRONT_Z + (CHARGER_Y0 - ANAGRAM_Y0) * TAN_A - UNDER_DECK_T),
             (CHARGER_Y0, 0.0),
         ]
+
+        # 9a. Full side enclosure walls
         for cx in [cradle_x_left, cradle_x_right]:
             with bd.BuildPart(mode=bd.Mode.ADD):
                 with bd.Locations((cx, 0.0, 0.0)):
@@ -267,45 +269,37 @@ def build_stage_pedalboard() -> bd.Solid:
                         bd.Polygon(cradle_pts)
                     bd.extrude(amount=cradle_wall_t / 2.0, both=True)
 
-        # Front USB Port Window into Cable Drop Trench
+        # ----------------------------------------------------------------------
+        # Step 9: Baseus GaN3 Pro Solid Enclosed Underbelly Shelf with Strap Slots
+        # ----------------------------------------------------------------------
+        shelf_t = 3.2
+        shelf_w = CHARGER_WIDTH + 2 * cradle_wall_t
+
+        # Solid floor plate spanning across both cradle walls
+        with bd.BuildPart(mode=bd.Mode.ADD):
+            with bd.Locations((CHARGER_X_CTR, CHARGER_Y_CTR, shelf_t / 2.0)):
+                bd.Box(shelf_w, CHARGER_LENGTH, shelf_t)
+
+        # Front & Rear Transverse Cable / Strap Slots through bottom shelf
+        with bd.BuildPart(mode=bd.Mode.SUBTRACT):
+            # Dual 5mm wide transverse slots for heavy-duty velcro or zip-ties
+            for strap_y in [CHARGER_Y0 + 18.0, CHARGER_Y1 - 18.0]:
+                with bd.Locations((CHARGER_X_CTR, strap_y, shelf_t / 2.0)):
+                    bd.Box(CHARGER_WIDTH + cradle_wall_t * 2 + 2.0, 5.0, shelf_t + 2.0)
+
+            # Ventilation and weight relief window in bottom shelf
+            with bd.Locations((CHARGER_X_CTR, CHARGER_Y_CTR, shelf_t / 2.0)):
+                bd.Box(CHARGER_WIDTH - 12.0, 24.0, shelf_t + 2.0)
+
+        # Front USB port window into cable drop trench
         with bd.BuildPart(mode=bd.Mode.SUBTRACT):
             with bd.Locations((CHARGER_X_CTR, TRENCH_Y1, 16.0)):
-                bd.Box(CHARGER_WIDTH + 4.0, 15.0, 26.0)
+                bd.Box(CHARGER_WIDTH - 6.0, 16.0, 24.0)
 
-        # Rear AC Power Cord Archway
+        # Rear AC power cord port
         with bd.BuildPart(mode=bd.Mode.SUBTRACT):
-            with bd.Locations((CHARGER_X_CTR, TOTAL_DEPTH, 10.0)):
-                bd.Box(24.0, 25.0, 20.0)
-
-        # ----------------------------------------------------------------------
-        # Step 10: Tool-Less Snap-In Retention Tabs for GaN3 Pro Charger
-        # ----------------------------------------------------------------------
-        # Dual flexible cantilever snap tabs at bottom of cradle to securely clip
-        # the charger body in place. Tool-less finger release.
-        snap_lip_width = 1.4
-        snap_tab_len = 16.0
-        snap_tab_z = 2.5
-        for side in [-1, 1]:
-            tab_x = CHARGER_X_CTR + side * (CHARGER_WIDTH / 2.0 - 0.2)
-            with bd.BuildPart(mode=bd.Mode.ADD):
-                with bd.Locations((tab_x, CHARGER_Y_CTR, snap_tab_z)):
-                    bd.Box(
-                        snap_lip_width,
-                        snap_tab_len,
-                        3.5,
-                        align=(bd.Align.CENTER, bd.Align.CENTER, bd.Align.MIN),
-                    )
-
-        # ----------------------------------------------------------------------
-        # Step 11: Convective Thermal Chimney Slots Beneath GaN Charger
-        # ----------------------------------------------------------------------
-        # 5 longitudinal slots allowing continuous airflow beneath the charger
-        slot_pitch = 7.0
-        for i in range(-2, 3):
-            slot_x = CHARGER_X_CTR + i * slot_pitch
-            with bd.BuildPart(mode=bd.Mode.SUBTRACT):
-                with bd.Locations((slot_x, CHARGER_Y_CTR, 0.0)):
-                    bd.Box(4.0, 48.0, 10.0)
+            with bd.Locations((CHARGER_X_CTR, TOTAL_DEPTH, 12.0)):
+                bd.Box(26.0, 25.0, 18.0)
 
         # ----------------------------------------------------------------------
         # Step 12: Right-Side Lightening Cavities (Optimized Skeletal Structure)
