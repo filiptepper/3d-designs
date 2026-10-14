@@ -126,6 +126,52 @@ This repository contains parametric 3D models designed using **[build123d](https
 
 ---
 
+### 4. Simple Lightweight Two-Tier Stage Pedalboard
+* **Script:** [`simple_pedalboard.py`](file:///home/filiptepper/Code/3d-designs/simple_pedalboard.py)
+* **Exported File:** `simple-pedalboard.stl`
+* **Description**: A clean-sheet, simple, stage-ready two-tier pedalboard built from scratch for the **M-VAVE Chocolate Plus** and **Darkglass Anagram**, featuring an underbelly cradle for the **Baseus GaN3 Pro 65W Desktop Charger**, ergonomic drop-in trays with fingertip pry notches, an inter-tier cable drop trench, and push-in C-clip cable guides.
+* **Footprint:** $220.0 \times 171.4 \times 51.1\,\text{mm}$
+* **Key Features:**
+  * **Lower Tier:** Form-fitting tray ($213.5 \times 37.0\,\text{mm}$, depth $6\,\text{mm}$) with side finger pry notches and bottom push-up window.
+  * **Upper Tier:** Raised ($+15\,\text{mm}$ step) and tilted forward at $11.5^\circ$ ($211.5 \times 106.5\,\text{mm}$), with full-width rear I/O cutout ($160\,\text{mm}$ wide) for 1/4", XLR, MIDI, and USB-C connectors.
+  * **Underbelly Charger Cradle:** Sized for Baseus GaN3 Pro 65W with thermal ventilation slots, rear AC cord archway, and front USB port window directly under the drop trench.
+  * **Zero-Flex Stomp Keel:** Continuous $3.5\,\text{mm}$ vertical center spine running directly from the deck to the floor ($Z = 0$), backed by a 5th center rubber bumper pad.
+  * **Cable Routing:** Full-width $16\,\text{mm}$ inter-tier drop trench and 3 push-in C-clip channels along interior ribs.
+
+---
+
+### 5. Stage Pedalboard Platform (Tour-Grade Engineering Specification)
+* **Script:** [`stage_pedalboard.py`](file:///home/filiptepper/Code/3d-designs/stage_pedalboard.py)
+* **Exported File:** [`stage-pedalboard.stl`](file:///home/filiptepper/Code/3d-designs/stage-pedalboard.stl)
+* **Description**: A comprehensive, tour-grade stage pedalboard engineered to meet the formal *Engineering Specification and Structural Design of an Additively Manufactured Stage Pedalboard Platform* guidelines. Designed for the **Darkglass Anagram**, **M-VAVE Chocolate Plus**, and an undermounted **Baseus GaN3 Pro 65W Desktop Charger (CCDK65S)**.
+* **Footprint:** $222.0 \times 178.0 \times 61.8\,\text{mm}$ (Single monolithic print; 100% watertight single solid, volume: $291.5\,\text{cm}^3$). Fits standard $256 \times 256\,\text{mm}$ and $250 \times 210\,\text{mm}$ desktop 3D printer beds.
+
+#### Engineering & Ergonomic Highlights:
+* **Inadvertent Actuation Prevention (Toe-Guard Barrier):**
+  * Continuous $5.0\,\text{mm}$ thick raised barrier rib rising to $Z = 51.0\,\text{mm}$ ($+10\,\text{mm}$ proud of the Anagram front deck).
+  * Acts as a positive mechanical stop for stage boots, eliminating accidental strikes against the Anagram’s 7" capacitive display, rotary encoders, or scene switches during rapid footswitch changes on the lower tier.
+  * Elevation differential $\Delta z = 32\,\text{mm}$ between lower controller top and upper deck floor ensures natural ankle articulation.
+* **Ergonomic Drop-In Trays:**
+  * **Lower Tier:** Form-fitting pocket ($213.5 \times 37.0 \times 6.0\,\text{mm}$) with $\varnothing 18\,\text{mm}$ side finger pry notches and an underbelly push-up window for effortless, tool-less removal.
+  * **Upper Tier:** Inclined at $8.0^\circ$ ($213.5 \times 106.5 \times 6.0\,\text{mm}$ along slope) with $\varnothing 30\,\text{mm}$ side finger pry notches.
+* **Tool-Less Snap-In Baseus GaN3 Pro Cradle:**
+  * Custom-fitted under the left Anagram deck ($X = -58.0\,\text{mm}$) for the Baseus GaN3 Pro CCDK65S ($70 \times 40 \times 36.9\,\text{mm}$).
+  * Integrated flexible cantilever snap tabs with $1.4\,\text{mm}$ locking detents securely retain the charger from below; tool-less release by simply flexing the tabs outward.
+  * 5 longitudinal convective cooling chimney slots ($4 \times 48\,\text{mm}$) in the floor plate maintain ambient airflow.
+  * Front window facing the central cable trench for immediate USB-C cable runs; rear archway for the thick AC mains cord to exit the rear-left flank.
+* **Zero-Deflection Stomp Keel & Bulkhead:**
+  * $3.5\,\text{mm}$ continuous longitudinal load spine connecting the deck underside directly down to the floor plane ($Z = 0$).
+  * $3.5\,\text{mm}$ transverse stomp bulkhead positioned directly under the Anagram footswitch strike zone ($Y = 100\,\text{mm}$).
+  * 5-point non-slip base with $12.7\,\text{mm}$ ($1/2"$) $\times 3.5\,\text{mm}$ deep counterbores for standard adhesive rubber bumper feet (4 corners + 1 center stomp pillar).
+* **Strict EMI Isolation & Cable Management:**
+  * AC mains power and DC supply lines are strictly isolated on the far-left flank, maintaining $>120\,\text{mm}$ physical separation from high-gain audio and balanced XLR outputs on the right flank.
+  * Full-width $22\,\text{mm}$ inter-tier cable drop trench allows $90^\circ$ right-angle USB and TRS plugs to dive directly below deck.
+  * Large $175\,\text{mm}$ wide rear open perimeter bay gives line-of-sight plug-in access for dual XLRs, 1/4" jacks, MIDI, USB, and DC barrel connectors.
+  * 3 integrated push-in C-clip retainers ($\varnothing 5.2\,\text{mm}$ bore with $3.6\,\text{mm}$ mouth) securely hold cables along the underbelly.
+
+---
+
+
 ## Getting Started
 
 ### Prerequisites
