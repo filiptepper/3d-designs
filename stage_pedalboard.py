@@ -247,21 +247,24 @@ def build_stage_pedalboard() -> bd.Solid:
                 bd.Box(18.0, 16.0, 14.0)
 
         # ----------------------------------------------------------------------
-        # Step 9: Baseus GaN3 Pro Charger Underbelly Cradle
+        # Step 9: Baseus GaN3 Pro Integrated Underbelly Bay
         # ----------------------------------------------------------------------
         cradle_wall_t = 3.5
         cradle_x_left = CHARGER_X_CTR - CHARGER_WIDTH / 2.0 - cradle_wall_t / 2.0
         cradle_x_right = CHARGER_X_CTR + CHARGER_WIDTH / 2.0 + cradle_wall_t / 2.0
 
+        # Extend guiding walls continuously from toe-guard/trench all the way to rear wall
+        bay_y0 = ANAGRAM_Y0
+        bay_y1 = TOTAL_DEPTH - REAR_WALL_THICKNESS
         cradle_pts = [
-            (CHARGER_Y0, 0.0),
-            (CHARGER_Y1, 0.0),
-            (CHARGER_Y1, ANAGRAM_FRONT_Z + (CHARGER_Y1 - ANAGRAM_Y0) * TAN_A - UNDER_DECK_T),
-            (CHARGER_Y0, ANAGRAM_FRONT_Z + (CHARGER_Y0 - ANAGRAM_Y0) * TAN_A - UNDER_DECK_T),
-            (CHARGER_Y0, 0.0),
+            (bay_y0, 0.0),
+            (bay_y1, 0.0),
+            (bay_y1, ANAGRAM_REAR_FLOOR_Z - UNDER_DECK_T),
+            (bay_y0, ANAGRAM_FRONT_Z - UNDER_DECK_T),
+            (bay_y0, 0.0),
         ]
 
-        # 9a. Full side enclosure walls
+        # 9a. Full side enclosure walls anchored to deck underside and front/rear boundaries
         for cx in [cradle_x_left, cradle_x_right]:
             with bd.BuildPart(mode=bd.Mode.ADD):
                 with bd.Locations((cx, 0.0, 0.0)):
@@ -270,15 +273,18 @@ def build_stage_pedalboard() -> bd.Solid:
                     bd.extrude(amount=cradle_wall_t / 2.0, both=True)
 
         # ----------------------------------------------------------------------
-        # Step 9: Baseus GaN3 Pro Solid Enclosed Underbelly Shelf with Strap Slots
+        # Step 10: Continuous Monolithic Bed-Level Base Floor (Left Bay)
         # ----------------------------------------------------------------------
+        # Bridges seamlessly from outer left sidewall (-111mm) to center spine (0mm),
+        # fully locking the charger cradle into the primary build plate footprint (no floating islands).
         shelf_t = 3.2
-        shelf_w = CHARGER_WIDTH + 2 * cradle_wall_t
+        left_subfloor_w = BOARD_WIDTH / 2.0  # Spans entire left half from X=-111 to X=0
+        left_subfloor_len = bay_y1 - bay_y0
+        left_subfloor_y_ctr = (bay_y0 + bay_y1) / 2.0
 
-        # Solid floor plate spanning across both cradle walls
         with bd.BuildPart(mode=bd.Mode.ADD):
-            with bd.Locations((CHARGER_X_CTR, CHARGER_Y_CTR, shelf_t / 2.0)):
-                bd.Box(shelf_w, CHARGER_LENGTH, shelf_t)
+            with bd.Locations((-left_subfloor_w / 2.0, left_subfloor_y_ctr, shelf_t / 2.0)):
+                bd.Box(left_subfloor_w, left_subfloor_len, shelf_t)
 
         # Front & Rear Transverse Cable / Strap Slots through bottom shelf
         with bd.BuildPart(mode=bd.Mode.SUBTRACT):
