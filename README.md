@@ -171,6 +171,41 @@ This repository contains parametric 3D models designed using **[build123d](https
 
 ---
 
+### 6. Standalone Darkglass Anagram Pedalboard
+* **Script:** [`anagram-pedalboard.py`](file:///home/filiptepper/Code/3d-designs/anagram-pedalboard.py)
+* **Exported File:** [`anagram-pedalboard.stl`](file:///home/filiptepper/Code/3d-designs/anagram-pedalboard.stl)
+* **Description**: An ultra-compact, standalone pedalboard custom-engineered exclusively for the **Darkglass Anagram**, featuring a transverse underbelly cradle for the **Baseus GaN3 Pro 65W Desktop Charger (CCDK65S)** and through-wall zip-tie cable management anchors.
+* **Footprint:** $220.0 \times 112.0 \times 58.8\,\text{mm}$ (Single monolithic print; 100% watertight single solid, volume: $215.8\,\text{cm}^3$). Fits virtually all desktop 3D printers ($256 \times 256\,\text{mm}$, $220 \times 220\,\text{mm}$, and $250 \times 210\,\text{mm}$ beds).
+
+#### Key Features & Optimized Geometry:
+* **1mm Reduced Walls (Weight-Optimized):**
+  * **Sidewalls:** $3.25\,\text{mm}$ (reduced by $1.0\,\text{mm}$ from $4.25\,\text{mm}$)
+  * **Front Lip:** $3.0\,\text{mm}$ (reduced by $1.0\,\text{mm}$ from $4.0\,\text{mm}$)
+  * **Rear Wall:** $3.5\,\text{mm}$ (reduced by $1.0\,\text{mm}$ from $4.5\,\text{mm}$)
+  * **Internal Cradle Walls:** $2.5\,\text{mm}$ (reduced by $0.5\,\text{mm}$ from $3.0\,\text{mm}$)
+  * Preserves 100% of internal pocket clearances, device tolerances, and insert counterbores while trimming $31.2\,\text{cm}^3$ of excess plastic.
+* **Form-Fitting Anagram Tray:**
+  * Pocket dimensions: $213.5 \times 106.5 \times 6.0\,\text{mm}$ angled at an ergonomic $8.0^\circ$ incline.
+  * Fits the Anagram bare or with the 3D-printed protective cover.
+  * $\varnothing 30\,\text{mm}$ ergonomic side finger pry notches for instant, tool-less lifting.
+* **Right Flank Slide-In Charger Cradle (Baseus GaN3 Pro CCDK65S):**
+  * Sized for $70 \times 40 \times 36.9\,\text{mm}$ charger oriented laterally along the $X$-axis on the right-hand side.
+  * **Slide-In Flank Portal:** $42.0 \times 38.5\,\text{mm}$ open entry on the right side wall allows the charger to slide directly into the underbelly cradle after printing.
+  * **AC Mains Cord:** Sits flush at the right edge and exits straight out the side with zero cord threading or disassembly needed.
+  * **USB Ports:** Face inwards towards the central underbelly chamber, protected inside the chassis.
+  * **Positive Snap Detent:** $1.5\,\text{mm}$ detent bump at entry locks the charger securely in place once seated.
+  * **Convective Thermal Chimney:** Bottom resting ledges leave a $36\,\text{mm}$ center gap along the entire underside for airflow.
+* **100% Printable Through-Wall Zip-Tie Slots:**
+  * Clean $4.0 \times 2.5\,\text{mm}$ pass-through slots cut through existing solid vertical walls (inner stop wall, center keel, and stomp bulkhead) for standard $2.5 - 3.6\,\text{mm}$ nylon zip ties (zero floating geometry).
+* **Zero-Flex Stomp Keel & Bulkhead:**
+  * $3.5\,\text{mm}$ continuous vertical keel along the center line ($X = 0$) connecting to the floor ($Z = 0$).
+  * $3.5\,\text{mm}$ transverse stomp bulkhead directly beneath footswitches A, B, and C ($Y = 35\,\text{mm}$).
+  * 5-point non-slip base with $12.7\,\text{mm}$ ($1/2"$) $\times 3.5\,\text{mm}$ deep counterbores for rubber bumper feet (4 corners + 1 center stomp pillar).
+* **Rear I/O Bay:**
+  * $175\,\text{mm}$ wide open rear cutout for direct line-of-sight plug-in of all XLRs, 1/4" jacks, MIDI, and USB-C cables.
+
+---
+
 
 ## Getting Started
 
