@@ -44,7 +44,7 @@ This repository contains parametric 3D models designed using **[build123d](https
   * Replaces hexagonal honeycomb holes with a clean geometric 5-bar emblem cutout.
   * $25.0\,\text{mm}$ stencil width ($39.29\,\text{mm}$ height, centered at $Y = 148.0\,\text{mm}, Z = 24.5\,\text{mm}$).
   * Solid $1.67\,\text{mm}$ perimeter ribs (solid 4-wall print with $0.4\,\text{mm}$ nozzle) and a $4.0\,\text{mm}$ solid structural bridge below Rail 4's socket floor.
-  * Mirrored horizontally on the left cheek so both emblems point harmoniously rearward/forward.
+  * Symmetrically styled between cheeks: Left cheek features the rearward-pointing crossbar arm (+Y), while the Right cheek features the forward-pointing crossbar arm (-Y).
   * Top and bottom channels are open into the solid cheek, yielding a 100% physically connected single manifold solid (zero floating islands).
 * **Rail-Mounted CIOKS Sol Cradle (Concept A):**
   * Mounts to the bottom T-slots of Rails 3 & 4 via drop-in T-nuts and M3/M4 button-head screws.

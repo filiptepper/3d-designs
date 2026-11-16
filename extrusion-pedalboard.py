@@ -237,7 +237,7 @@ def build_elevated_leg(
     is_left: bool = True,
     through_hole_logo: bool = True,
     deboss_logo: bool = False,
-    mirror_logo: bool = True,
+    mirror_logo: Optional[bool] = None,
 ) -> bd.Solid:
     """
     Constructs the elevated 2020 extrusion pedalboard leg cheek:
@@ -247,8 +247,13 @@ def build_elevated_leg(
       - 4x 2020 extrusion sockets (20.5 x 20.5 mm x 12.7 mm depth)
       - 4x dia 6.5 mm through-holes for M5/M6 bolts on ALL 4 sockets
       - Through-hole custom logo (cuts through the entire cheek wall, replacing honeycomb)
-      - mirror_logo: Horizontally flips the logo on the cheek (defaults to True for left leg)
+      - mirror_logo: Controls horizontal orientation of logo on cheek:
+          True: crossbar points rearward (+Y, default for left leg)
+          False: crossbar points forward (-Y, default for right leg)
     """
+    if mirror_logo is None:
+        mirror_logo = True if is_left else False
+
     elev_outer, elev_rim = _get_base_loops()
 
     with bd.BuildPart() as bp:
