@@ -61,16 +61,17 @@ This repository contains parametric 3D models designed using **[build123d](https
 * **Exported Files:**
   * [`akai_mpk_mini_joystick_oem.stl`](file:///home/filiptepper/Code/3d-designs/akai_mpk_mini_joystick_oem.stl) (Direct OEM drop-in replacement with center M2 screw pocket)
   * [`akai_mpk_mini_joystick_repair_sleeve.stl`](file:///home/filiptepper/Code/3d-designs/akai_mpk_mini_joystick_repair_sleeve.stl) (Reinforced deep socket for snapped stem stubs)
-  * [`akai_mpk_mini_joystick_square_stem.stl`](file:///home/filiptepper/Code/3d-designs/akai_mpk_mini_joystick_square_stem.stl) (Universal 3.4x3.4 mm press-fit socket for bare Alps gimbals)
-  * [`akai_mpk_mini_joystick_top_plug.stl`](file:///home/filiptepper/Code/3d-designs/akai_mpk_mini_joystick_top_plug.stl) (Cosmetic snap-in cover for the screw counterbore)
-* **Description**: Parametric replacement for the fragile red 4-way pitch bend and modulation thumbstick on the Akai MPK Mini MK2 (also compatible with MK3 and MPK Mini Play).
-  * **Ergonomic Head:** $\varnothing 12.0\,\text{mm}$ textured thumbpad with a $0.8\,\text{mm}$ concave dish and concentric micro-traction rings.
-  * **Spherical Dust Skirt:** $\varnothing 15.2\,\text{mm}$ spherical collar seating inside the top chassis aperture to seal against dust through $\pm 25^\circ$ deflection.
+  * [`akai_mpk_mini_joystick_square_stem.stl`](file:///home/filiptepper/Code/3d-designs/akai_mpk_mini_joystick_square_stem.stl) (Seamless solid-top $3.4 \times 3.4\,\text{mm}$ press-fit socket for bare Alps gimbals)
+  * [`akai_mpk_mini_joystick_top_plug.stl`](file:///home/filiptepper/Code/3d-designs/akai_mpk_mini_joystick_top_plug.stl) (Contoured snap-in cover matching the concave dish curvature)
+  * [`akai_mpk_mini_joystick_cover.stl`](file:///home/filiptepper/Code/3d-designs/akai_mpk_mini_joystick_cover.stl) (Low-profile snap-in blanking plug to seal the bezel gap if joystick is unused; prints flat upside-down with zero supports)
+* **Description**: Parametric replacement for the red 4-way pitch bend and modulation thumbstick on the Akai MPK Mini MK2 (also compatible with MK3 and MPK Mini Play).
+  * **Mushroom Thumb Head:** $\varnothing 12.6\,\text{mm}$ rounded mushroom cap with a smooth $0.65\,\text{mm}$ concave thumb dish ($12.4\,\text{mm}$ total height).
+  * **Hollow Convex Dust Dome:** $\varnothing 16.2\,\text{mm}$ hemispherical dome skirt ($1.6\,\text{mm}$ wall thickness) hollowed underneath around the central stem to clear the internal gimbal while sealing the chassis bezel through $\pm 25^\circ$ deflection.
   * **Printing Parameters (Bambu Lab A1):**
     * **Material:** PETG (recommended for impact toughness and layer bonding) or Tough PLA.
-    * **Layer Height:** $0.12\,\text{mm}$ High Quality (or $0.08\,\text{mm}$) for smooth skirt curvature and crisp thumbpad ridges.
+    * **Layer Height:** $0.12\,\text{mm}$ High Quality (or $0.08\,\text{mm}$) for smooth dome and mushroom cap curvature.
     * **Infill / Walls:** 100% solid infill or 6+ perimeter walls (critical to resist lateral thumb shear forces).
-    * **Orientation:** Print upright with Tree Supports (Slim) under the spherical skirt and a $3\,\text{mm}$ outer brim for bed adhesion.
+    * **Orientation:** Print upright with Tree Supports (Slim) under the dome interior and mushroom overhang, plus a $3\,\text{mm}$ outer brim for bed adhesion.
 
 ---
 
