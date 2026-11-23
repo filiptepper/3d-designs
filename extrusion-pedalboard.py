@@ -577,6 +577,8 @@ def main():
     analyze_clearances()
 
     # 1. Export 3D-printable STLs oriented flat for the build plate:
+    builds_dir = Path(__file__).resolve().parent / "builds"
+    builds_dir.mkdir(parents=True, exist_ok=True)
     print("\nExporting 3D Printable STLs (Oriented Flat on Bed)...")
 
     # Left leg: oriented flat on its inner face (X = 19.05 mm rotated to Z = 0)
@@ -584,30 +586,30 @@ def main():
     rot_l = bd.Rotation(0, 90, 0) * leg_l
     bb_l = rot_l.bounding_box()
     leg_l_flat = bd.Pos(0, 0, -bb_l.min.Z) * rot_l
-    bd.export_stl(leg_l_flat, "pedalboard_leg_elevated_l.stl", tolerance=0.04, angular_tolerance=0.08)
-    print("  [OK] Exported pedalboard_leg_elevated_l.stl (Flat on inner face, zero supports)")
+    bd.export_stl(leg_l_flat, str(builds_dir / "pedalboard_leg_elevated_l.stl"), tolerance=0.04, angular_tolerance=0.08)
+    print("  [OK] Exported builds/pedalboard_leg_elevated_l.stl (Flat on inner face, zero supports)")
 
     # Right leg: oriented flat on its inner face
     leg_r = models["leg_right_elevated"]
     rot_r = bd.Rotation(0, -90, 0) * leg_r
     bb_r = rot_r.bounding_box()
     leg_r_flat = bd.Pos(0, 0, -bb_r.min.Z) * rot_r
-    bd.export_stl(leg_r_flat, "pedalboard_leg_elevated_r.stl", tolerance=0.04, angular_tolerance=0.08)
-    print("  [OK] Exported pedalboard_leg_elevated_r.stl (Flat on inner face, zero supports)")
+    bd.export_stl(leg_r_flat, str(builds_dir / "pedalboard_leg_elevated_r.stl"), tolerance=0.04, angular_tolerance=0.08)
+    print("  [OK] Exported builds/pedalboard_leg_elevated_r.stl (Flat on inner face, zero supports)")
 
     # Cradle: oriented flat on its bottom floor (Z = 0)
     cradle_raw = models["raw_cradle"]
-    bd.export_stl(cradle_raw, "pedalboard_cioks_rail_cradle.stl", tolerance=0.04, angular_tolerance=0.08)
-    print("  [OK] Exported pedalboard_cioks_rail_cradle.stl (Flat on base, zero supports)")
+    bd.export_stl(cradle_raw, str(builds_dir / "pedalboard_cioks_rail_cradle.stl"), tolerance=0.04, angular_tolerance=0.08)
+    print("  [OK] Exported builds/pedalboard_cioks_rail_cradle.stl (Flat on base, zero supports)")
 
     # 2. Export Assembled STLs
     rails_solid = models["rail_1_front"] + models["rail_2_mid_front"] + models["rail_3_mid_rear"] + models["rail_4_rear"]
-    bd.export_stl(rails_solid, "pedalboard_2020_rails_elevated.stl", tolerance=0.05, angular_tolerance=0.1)
-    print("  [OK] Exported pedalboard_2020_rails_elevated.stl (4x elevated rails)")
+    bd.export_stl(rails_solid, str(builds_dir / "pedalboard_2020_rails_elevated.stl"), tolerance=0.05, angular_tolerance=0.1)
+    print("  [OK] Exported builds/pedalboard_2020_rails_elevated.stl (4x elevated rails)")
 
     full_assembly = models["leg_left_elevated"] + models["leg_right_elevated"] + rails_solid + models["cioks_rail_cradle"]
-    bd.export_stl(full_assembly, "pedalboard_extrusion_assembly_v2.stl", tolerance=0.05, angular_tolerance=0.1)
-    print("  [OK] Exported pedalboard_extrusion_assembly_v2.stl (Complete merged assembly)")
+    bd.export_stl(full_assembly, str(builds_dir / "pedalboard_extrusion_assembly_v2.stl"), tolerance=0.05, angular_tolerance=0.1)
+    print("  [OK] Exported builds/pedalboard_extrusion_assembly_v2.stl (Complete merged assembly)")
 
     # 3. Broadcast to OCP CAD Viewer
     try:

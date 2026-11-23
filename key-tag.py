@@ -1,3 +1,4 @@
+from pathlib import Path
 from build123d import *
 from ocp_vscode import *
 
@@ -32,4 +33,6 @@ with BuildPart() as key_tag:
 show(key_tag)
 
 # Export the key tag to STL
-export_stl(key_tag.part, "key_tag.stl")
+builds_dir = Path(__file__).resolve().parent / "builds"
+builds_dir.mkdir(parents=True, exist_ok=True)
+export_stl(key_tag.part, str(builds_dir / "key_tag.stl"))

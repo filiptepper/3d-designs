@@ -319,7 +319,8 @@ def build_blanking_cover(
 
 
 if __name__ == "__main__":
-    output_dir = os.path.dirname(os.path.abspath(__file__))
+    output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "builds")
+    os.makedirs(output_dir, exist_ok=True)
 
     # 1. OEM Screw Mount variant
     joystick_oem = build_joystick(variant="oem")

@@ -1,3 +1,4 @@
+from pathlib import Path
 from build123d import *
 from ocp_vscode import *
 
@@ -156,4 +157,6 @@ with BuildPart() as cover:
 show(cover)
 
 # Export the part to STL for 3D printing
-export_stl(cover.part, "darkglass-anagram-cover-v2.stl")
+builds_dir = Path(__file__).resolve().parent / "builds"
+builds_dir.mkdir(parents=True, exist_ok=True)
+export_stl(cover.part, str(builds_dir / "darkglass-anagram-cover-v2.stl"))

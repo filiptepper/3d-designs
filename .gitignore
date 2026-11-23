@@ -2,3 +2,8 @@
 .venv
 *.stl
 __pycache__/
+builds/*
+!builds/.gitkeep
+profiles/*
+!profiles/.gitkeep
+.DS_Store
